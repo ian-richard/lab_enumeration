@@ -31,7 +31,6 @@ Cinema.prototype.filmByYearTrueFalse = function(year, films) {
   return result;
 }
 
-module.exports = Cinema;
 
 Cinema.prototype.allFilmsByLength = function(length, films) {
   const result = films.every((film) => {
@@ -49,7 +48,7 @@ Cinema.prototype.totalRunningTime = function(films) {
 
 Cinema.prototype.filmsByProperty = function(property, value, films) {
   const result = films.filter((film) => {
-    return film.year === value;
+    return film[property] === value;
   });
   return result;
 }
