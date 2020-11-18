@@ -1,4 +1,5 @@
 const assert = require('assert');
+const { isRegExp } = require('util');
 const Cinema = require('../models/cinema.js');
 const Film = require('../models/film.js');
 
@@ -52,8 +53,27 @@ describe('Cinema', function () {
     const expected = true;
     assert.strictEqual(expected, actual);
   });
-  it('should be able to check whether there are no films from a particular year');
-  it('should be able to check whether all films are over a particular length');
-  it('should be able to calculate total running time of all films');
+  it('should be able to check whether there are no films from a particular year', function () {
+    const actual = cinema.filmByYearTrueFalse(2015, films);
+    const expected = false;
+    assert.strictEqual(expected, actual);
+  });
+  it('should be able to check whether all films are over a particular length', function (){
+    const actual = cinema.allFilmsByLength(90, films);
+    const expected = true;
+    assert.strictEqual(expected, actual);
+  });
+  it('should be able to calculate total running time of all films', function () {
+    const actual = cinema.totalRunningTime(films);
+    const expected = 622;
+    assert.strictEqual(expected, actual)
+  });
+
+  it('should be able to filter films by year', function () {
+    const actual = cinema.filmsByProperty(2017, films);
+    const expected = [bladeRunner, dunkirk, trainspotting];
+    assert.deepStrictEqual(expected, actual)
+  })
+
 
 });

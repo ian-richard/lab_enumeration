@@ -24,4 +24,27 @@ Cinema.prototype.filmByGenre = function(genre, films) {
   return result;
 }
 
+Cinema.prototype.filmByYearTrueFalse = function(year, films) {
+  const result = films.some((film) => {
+    return film.year === year;
+  })
+  return result;
+}
+
+module.exports = Cinema;
+
+Cinema.prototype.allFilmsByLength = function(length, films) {
+  const result = films.every((film) => {
+    return film.length > length;
+  })
+  return result;
+}
+
+Cinema.prototype.totalRunningTime = function(films) {
+  const result = films.reduce((accumulator, film) => {
+    return accumulator + film.length;
+  }, 0);
+  return result;
+}
+
 module.exports = Cinema;
